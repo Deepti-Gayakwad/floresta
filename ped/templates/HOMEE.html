@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLORESTA</title>
+    <!-- Link to Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../css/HOMEE.css"> -->
+
+    <link rel="stylesheet" href="{% static 'css/HOMEE.css' %}">
+    
+</head>
+<body>
+    <!-- code for diplaying pop up message of login successful -->
+    <!-- {% if messages %}
+        <div id="popup-message">
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %} -->
+    {% if messages %}
+  <div id="popup-message-wrapper">
+    {% for message in messages %}
+      <div class="popup-flower">
+        <div class="popup-text">
+          {{ message }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
+    <!-- Animated Heading -->
+    <div class="container">
+        <h1>A world of green.</h1>
+        <h1>FLORESTA.</h1>
+    </div>
+
+    <!-- Second Navbar -->
+    <header>
+        <nav id="services" class="navbar second-navbar">
+            <div class="search-container">
+                <button type="button" id="search-icon">
+                    <!-- Elegant Font Awesome search icon -->
+                    <i class="fas fa-search"></i>
+                </button>
+                <input type="text" id="search" placeholder="What are you looking for..." class="hidden">
+            </div>
+            <nav>
+                <ul>
+                  <!-- <li><a href="{% url 'homee' %}">Home</a></li> -->
+                  <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                  <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+                  <li><a href="{% url 'myplants' %}">My Plants</a></li>
+                  <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                  <li><a href="{% url 'blogs' %}">Blogs</a></li>
+                  <li><a href="{% url 'login' %}">Login</a></li>
+                  
+                  {% if user.is_authenticated %}
+                  <li class="user-dropdown">
+                    <img src="{% static 'images/profile.png' %}" class="user-icon" onclick="toggleDropdown()" alt="User">
+                      <div id="dropdownMenu" class="dropdown-content">
+                          <p class="username">Hi, {{ user.username }}!</p>
+                          <a href="{% url 'logout' %}">Logout</a>
+                      </div>
+                  </li>
+                  {% endif %}
+                </ul>
+            </nav>
+              
+            <!-- <ul class="sidebar">
+                <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li> <a href="INDOOR.html">Indoor Plants</a> </li>
+                <li> <a href="OUTDOOR.html">Outdoor Plant</a></li>
+                <li> <a href="HOMEREME.html">Home Remedies</a> </li>
+                <li> <a href="MYPLANT.html">My Plants</a> </li>
+                <li> <a href="blog/createblog.html">Blogs</a> </li>
+            </ul> -->
+            <!-- <ul>
+                <li class="hideOnMobile"><a href="INDOOR.html">Indoor Plants</a></li>
+                <li class="hideOnMobile"><a href="OUTDOOR.html">Outdoor Plants</a></li>
+                <li class="hideOnMobile"><a href="HOMEREME.html">Home Remedies</a></li>
+                <li class="hideOnMobile"><a href="MYPLANT.html">My Plants</a></li>
+                <li class="hideOnMobile"><a href="blog/createblog.html">BLOGS</a> </li>
+                <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+            </ul> -->
+        </nav>
+    </header>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides Slide">
+            <img src="{% static 'images/a1.jpeg' %}" alt="Test Image" width=100%>
+            
+        </div>
+
+        <div class="mySlides Slide">
+            <img src="{% static 'images/a2.jpg' %}" alt="Slide 2">
+            
+        </div>
+
+        <div class="mySlides Slide">
+            <img src="{% static 'images/a3.jpg' %}" alt="Slide 3">
+            
+        </div>
+
+        <div class="mySlides Slide">
+            <img src="{% static 'images/a4.jpg' %}" alt="Slide 4">
+            
+        </div>
+
+        <div class="mySlides Slide">
+            <img src="{% static 'images/a5.jpeg' %}" alt="slide 5">
+        </div>
+
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+    </div>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="{% static 'images/about.avif' %}" alt="About us">
+            </div>
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>
+                    We are a team of passionate professionals dedicated to delivering high-quality solutions. 
+                    Our mission is to innovate and provide outstanding services to our clients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>FLORESTA</h2>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="HOMEE.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/shrushtishrivastav04/"><img src="images/instagram-icon.webp" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/in/shrushti-shrivastav-227a1b289/"><img src="images/linkedin-icon.webp" alt="LinkedIn"></a>
+                <a href="#"><img src="images/facebook-icon.webp" alt="Facebook"></a>
+            </div>
+        </div>
+
+        <p class="footer-copy">© 2024 FLORESTA. All rights reserved.</p>
+    </footer>
+
+    <!-- <script src="../css/HOMEE.js"></script> -->
+    <!-- code for the pop up message -->
+    <!-- <script src="{% static 'js/HOMEE.js' %}"></script> -->
+    <script src="{% static 'js/HOMEE.js' %}"></script>
+
+    <script>
+        setTimeout(function () {
+            const popup = document.getElementById('popup-message-wrapper');
+            if (popup) {
+                popup.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+    
+    <script>
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdownMenu");
+    
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                // Close other dropdowns (if any)
+                document.querySelectorAll('.dropdown-content').forEach(el => el.style.display = 'none');
+                menu.style.display = "block";
+            }
+        }
+    
+        window.addEventListener('click', function(e) {
+            const userDropdown = document.querySelector('.user-dropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+    
+            // If click is outside the dropdown, close it
+            if (!userDropdown.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+    </script>
+    
+    
+    <!-- <script>
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+    
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.user-dropdown')) {
+                const dropdown = document.getElementById("dropdownMenu");
+                if (dropdown) dropdown.style.display = "none";
+            }
+        });
+    </script> -->
+    
+    
+    
+    
+    
+</body>
+</html>
